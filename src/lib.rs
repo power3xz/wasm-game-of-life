@@ -10,11 +10,6 @@ extern "C" {
 }
 
 #[wasm_bindgen]
-pub fn greet(name: &str) {
-    alert(&format!("Hello, {}", name));
-}
-
-#[wasm_bindgen]
 #[repr(u8)]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Cell {
@@ -29,9 +24,10 @@ pub struct Universe {
     cells: Vec<Cell>,
 }
 
+#[wasm_bindgen]
 impl Universe {
     fn get_index(&self, row: u32, column: u32) -> usize {
-        (row * self.width * column) as usize
+        (row * self.width + column) as usize
     }
 
     fn live_neighbor_count(&self, row: u32, column: u32) -> u8 {
@@ -69,6 +65,7 @@ impl Universe {
                 next[idx] = next_cell;
             }
         }
+        self.cells = next;
     }
 
     pub fn new() -> Universe {
