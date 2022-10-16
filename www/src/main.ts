@@ -1,4 +1,3 @@
-// @ts-check
 import * as wasm from "wasm-game-of-life";
 
-wasm.greet("life!");
+wasm.greet("lfe!");
