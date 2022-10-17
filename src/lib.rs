@@ -76,7 +76,7 @@ impl Universe {
 
         let cells = (0..width * height)
             .map(|_| {
-                if js_sys::Math::random() < 0.7 {
+                if js_sys::Math::random() < 0.5 {
                     Cell::Alive
                 } else {
                     Cell::Dead
