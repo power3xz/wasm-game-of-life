@@ -72,17 +72,43 @@ const drawCells = () => {
   ctx.stroke();
 };
 
+let animationId: null | number = null;
+
+const playPauseButton = document.getElementById("play-pause")!;
+
+const play = () => {
+  playPauseButton.textContent = "⏸";
+  renderLoop();
+};
+
+const pause = () => {
+  playPauseButton.textContent = "▶️";
+  if (animationId) {
+    cancelAnimationFrame(animationId);
+    animationId = null;
+  }
+};
+
+playPauseButton.addEventListener("click", () => {
+  if (isPaused()) {
+    play();
+  } else {
+    pause();
+  }
+});
+
+const isPaused = () => {
+  return animationId === null;
+};
 const renderLoop = () => {
   universe.tick();
 
   drawGrid();
   drawCells();
 
-  requestAnimationFrame(renderLoop);
+  animationId = requestAnimationFrame(renderLoop);
 };
 
 drawGrid();
 drawCells();
-setTimeout(() => {
-  renderLoop();
-}, 1000);
+play();
