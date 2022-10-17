@@ -90,6 +90,41 @@ impl Universe {
     pub fn cells(&self) -> *const u32 {
         self.cells.as_slice().as_ptr()
     }
+
+    pub fn set_width(&mut self, width: u32) {
+        self.width = width;
+        let size = (self.width * self.height) as usize;
+        let mut cells = FixedBitSet::with_capacity(size);
+
+        for i in 0..size {
+            cells.set(i, false);
+        }
+        self.cells = cells;
+    }
+
+    pub fn set_height(&mut self, height: u32) {
+        self.height = height;
+        let size = (self.width * self.height) as usize;
+        let mut cells = FixedBitSet::with_capacity(size);
+
+        for i in 0..size {
+            cells.set(i, false);
+        }
+        self.cells = cells;
+    }
+}
+
+impl Universe {
+    pub fn get_cells(&self) -> &fixedbitset::FixedBitSet {
+        &self.cells
+    }
+
+    pub fn set_cells(&mut self, cells: &[(u32, u32)]) {
+        for (row, col) in cells.iter().cloned() {
+            let idx = self.get_index(row, col);
+            self.cells.set(idx, true);
+        }
+    }
 }
 
 impl Default for Universe {
