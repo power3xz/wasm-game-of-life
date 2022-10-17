@@ -28,3 +28,6 @@ opt-level = "s"
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.33"
+
+[features]
+default = ["console_error_panic_hook"]
