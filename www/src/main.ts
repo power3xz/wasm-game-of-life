@@ -26,7 +26,17 @@ canvas.addEventListener("click", (event) => {
   const row = Math.min(Math.floor(canvasTop / (CELL_SIZE + 1)), height - 1);
   const col = Math.min(Math.floor(canvasLeft / (CELL_SIZE + 1)), width - 1);
 
-  universe.toggle_cell(row, col);
+  if (readyGlider) {
+    universe.set_cell(row - 1, col, true);
+    universe.set_cell(row, col + 1, true);
+    universe.set_cell(row + 1, col - 1, true);
+    universe.set_cell(row + 1, col, true);
+    universe.set_cell(row + 1, col + 1, true);
+  } else if (readyPulsar) {
+  } else {
+    universe.toggle_cell(row, col);
+  }
+
   drawGrid();
   drawCells();
 });
@@ -111,6 +121,24 @@ playPauseButton.addEventListener("click", () => {
     play();
   } else {
     pause();
+  }
+});
+let readyGlider = false;
+let readyPulsar = false;
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Alt") {
+    readyGlider = true;
+  }
+  if (e.key === "Shift") {
+    readyPulsar = true;
+  }
+});
+document.addEventListener("keyup", (e) => {
+  if (e.key === "Alt") {
+    readyGlider = false;
+  }
+  if (e.key === "Shift") {
+    readyPulsar = false;
   }
 });
 

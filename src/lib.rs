@@ -133,6 +133,11 @@ impl Universe {
         let idx = self.get_index(row, column);
         self.cells.set(idx, !self.cells[idx]);
     }
+
+    pub fn set_cell(&mut self, row: u32, column: u32, is_on: bool) {
+        let idx = self.get_index(row, column);
+        self.cells.set(idx, is_on);
+    }
 }
 
 impl Universe {
