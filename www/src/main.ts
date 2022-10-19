@@ -27,42 +27,146 @@ canvas.addEventListener("click", (event) => {
   const col = Math.min(Math.floor(canvasLeft / (CELL_SIZE + 1)), width - 1);
 
   if (readyGlider) {
-    universe.set_cell(row - 1, col, true);
-    universe.set_cell(row, col + 1, true);
-    universe.set_cell(row + 1, col - 1, true);
-    universe.set_cell(row + 1, col, true);
-    universe.set_cell(row + 1, col + 1, true);
+    universe.set_cell((row - 1 + height) % height, (col + width) % width, true);
+    universe.set_cell((row + height) % height, (col + 1 + width) % width, true);
+    universe.set_cell(
+      (row + 1 + height) % height,
+      (col - 1 + width) % width,
+      true
+    );
+    universe.set_cell((row + 1 + height) % height, (col + width) % width, true);
+    universe.set_cell(
+      (row + 1 + height) % height,
+      (col + 1 + width) % width,
+      true
+    );
   } else if (readyPulsar) {
-    for (let i = -1; i <= 1; i += 2) {
-      universe.set_cell(row - 6 * i, col - 2, true);
-      universe.set_cell(row - 6 * i, col - 3, true);
-      universe.set_cell(row - 6 * i, col - 4, true);
-      universe.set_cell(row - 6 * i, col + 2, true);
-      universe.set_cell(row - 6 * i, col + 3, true);
-      universe.set_cell(row - 6 * i, col + 4, true);
+    [-1, 1].forEach((i) => {
+      universe.set_cell(
+        (row - 6 * i + height) % height,
+        (col - 2 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 6 * i + height) % height,
+        (col - 3 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 6 * i + height) % height,
+        (col - 4 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 6 * i + height) % height,
+        (col + 2 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 6 * i + height) % height,
+        (col + 3 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 6 * i + height) % height,
+        (col + 4 + width) % width,
+        true
+      );
 
-      universe.set_cell(row - 4 * i, col - 1, true);
-      universe.set_cell(row - 4 * i, col - 6, true);
-      universe.set_cell(row - 4 * i, col + 1, true);
-      universe.set_cell(row - 4 * i, col + 6, true);
+      universe.set_cell(
+        (row - 4 * i + height) % height,
+        (col - 1 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 4 * i + height) % height,
+        (col - 6 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 4 * i + height) % height,
+        (col + 1 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 4 * i + height) % height,
+        (col + 6 + width) % width,
+        true
+      );
 
-      universe.set_cell(row - 3 * i, col - 1, true);
-      universe.set_cell(row - 3 * i, col - 6, true);
-      universe.set_cell(row - 3 * i, col + 1, true);
-      universe.set_cell(row - 3 * i, col + 6, true);
+      universe.set_cell(
+        (row - 3 * i + height) % height,
+        (col - 1 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 3 * i + height) % height,
+        (col - 6 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 3 * i + height) % height,
+        (col + 1 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 3 * i + height) % height,
+        (col + 6 + width) % width,
+        true
+      );
 
-      universe.set_cell(row - 2 * i, col - 1, true);
-      universe.set_cell(row - 2 * i, col - 6, true);
-      universe.set_cell(row - 2 * i, col + 1, true);
-      universe.set_cell(row - 2 * i, col + 6, true);
+      universe.set_cell(
+        (row - 2 * i + height) % height,
+        (col - 1 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 2 * i + height) % height,
+        (col - 6 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 2 * i + height) % height,
+        (col + 1 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 2 * i + height) % height,
+        (col + 6 + width) % width,
+        true
+      );
 
-      universe.set_cell(row - 1 * i, col - 2, true);
-      universe.set_cell(row - 1 * i, col - 3, true);
-      universe.set_cell(row - 1 * i, col - 4, true);
-      universe.set_cell(row - 1 * i, col + 2, true);
-      universe.set_cell(row - 1 * i, col + 3, true);
-      universe.set_cell(row - 1 * i, col + 4, true);
-    }
+      universe.set_cell(
+        (row - 1 * i + height) % height,
+        (col - 2 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 1 * i + height) % height,
+        (col - 3 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 1 * i + height) % height,
+        (col - 4 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 1 * i + height) % height,
+        (col + 2 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 1 * i + height) % height,
+        (col + 3 + width) % width,
+        true
+      );
+      universe.set_cell(
+        (row - 1 * i + height) % height,
+        (col + 4 + width) % width,
+        true
+      );
+    });
   } else {
     universe.toggle_cell(row, col);
   }
@@ -175,7 +279,6 @@ document.addEventListener("keyup", (e) => {
 const tickRange = document.querySelector<HTMLInputElement>("#tick-range")!;
 tickRange.addEventListener("change", (e) => {
   tickPerFrame = (e.target as any).value;
-  console.log(tickPerFrame);
 });
 
 const isPaused = () => {
