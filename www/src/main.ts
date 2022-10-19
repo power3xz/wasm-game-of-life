@@ -1,5 +1,6 @@
 import { Universe } from "wasm-game-of-life";
 import { memory } from "wasm-game-of-life/wasm_game_of_life_bg.wasm";
+import { fps } from "./fps";
 
 const CELL_SIZE = 5;
 const GRID_COLOR = "#ccc";
@@ -285,6 +286,7 @@ const isPaused = () => {
   return animationId === null;
 };
 const renderLoop = () => {
+  fps.render();
   for (let i = 0; i < tickPerFrame; i++) {
     universe.tick();
   }
