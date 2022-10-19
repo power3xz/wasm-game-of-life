@@ -33,6 +33,36 @@ canvas.addEventListener("click", (event) => {
     universe.set_cell(row + 1, col, true);
     universe.set_cell(row + 1, col + 1, true);
   } else if (readyPulsar) {
+    for (let i = -1; i <= 1; i += 2) {
+      universe.set_cell(row - 6 * i, col - 2, true);
+      universe.set_cell(row - 6 * i, col - 3, true);
+      universe.set_cell(row - 6 * i, col - 4, true);
+      universe.set_cell(row - 6 * i, col + 2, true);
+      universe.set_cell(row - 6 * i, col + 3, true);
+      universe.set_cell(row - 6 * i, col + 4, true);
+
+      universe.set_cell(row - 4 * i, col - 1, true);
+      universe.set_cell(row - 4 * i, col - 6, true);
+      universe.set_cell(row - 4 * i, col + 1, true);
+      universe.set_cell(row - 4 * i, col + 6, true);
+
+      universe.set_cell(row - 3 * i, col - 1, true);
+      universe.set_cell(row - 3 * i, col - 6, true);
+      universe.set_cell(row - 3 * i, col + 1, true);
+      universe.set_cell(row - 3 * i, col + 6, true);
+
+      universe.set_cell(row - 2 * i, col - 1, true);
+      universe.set_cell(row - 2 * i, col - 6, true);
+      universe.set_cell(row - 2 * i, col + 1, true);
+      universe.set_cell(row - 2 * i, col + 6, true);
+
+      universe.set_cell(row - 1 * i, col - 2, true);
+      universe.set_cell(row - 1 * i, col - 3, true);
+      universe.set_cell(row - 1 * i, col - 4, true);
+      universe.set_cell(row - 1 * i, col + 2, true);
+      universe.set_cell(row - 1 * i, col + 3, true);
+      universe.set_cell(row - 1 * i, col + 4, true);
+    }
   } else {
     universe.toggle_cell(row, col);
   }
