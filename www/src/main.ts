@@ -89,6 +89,7 @@ const drawCells = () => {
 };
 
 let animationId: null | number = null;
+let tickPerFrame = 1;
 
 const playPauseButton = document.getElementById("play-pause")!;
 
@@ -113,11 +114,19 @@ playPauseButton.addEventListener("click", () => {
   }
 });
 
+const tickRange = document.querySelector<HTMLInputElement>("#tick-range")!;
+tickRange.addEventListener("change", (e) => {
+  tickPerFrame = (e.target as any).value;
+  console.log(tickPerFrame);
+});
+
 const isPaused = () => {
   return animationId === null;
 };
 const renderLoop = () => {
-  universe.tick();
+  for (let i = 0; i < tickPerFrame; i++) {
+    universe.tick();
+  }
 
   drawGrid();
   drawCells();
